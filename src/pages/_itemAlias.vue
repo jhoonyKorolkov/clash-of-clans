@@ -32,7 +32,7 @@ export default {
     const alias = this.$route.params.itemAlias
     const item = alias && data.find(el => el.alias === alias)
     if (!item) {
-      return this.$router.push({ name: 'NotFound' })
+      return this.$router.push({ name: 'notFound' })
     }
     this.item = item
   }
