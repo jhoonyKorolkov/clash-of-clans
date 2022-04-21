@@ -29,12 +29,8 @@ export default {
     }
   },
   created() {
-    console.log(this.$router)
-
     const alias = this.$route.params.itemAlias
     const item = alias && data.find(el => el.alias === alias)
-    console.log(item)
-
     if (!item) {
       return this.$router.push({ name: 'NotFound' })
     }
