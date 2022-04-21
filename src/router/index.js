@@ -7,7 +7,6 @@ import HomePage from '@/pages/home'
 import AboutPage from '@/pages/about'
 import NotFoundPage from '@/pages/notFound'
 import Item from '@/pages/_itemAlias'
-import links from '@/seeders/items.js'
 
 const routes = [
   {
@@ -23,14 +22,10 @@ const routes = [
   {
     path: '/:itemAlias',
     name: 'itemAlias',
-    component: Item,
-    beforeEnter(to, from) {
-      const exists = links.find(el => el.alias === to.params.itemAlias)
-      if (!exists) return { name: 'notFound' }
-    }
+    component: Item
   },
   {
-    path: '/:pathMatch(.*)*',
+    path: '/:catchAll(.*)*',
     name: 'notFound',
     component: NotFoundPage
   }

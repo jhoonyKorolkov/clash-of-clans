@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import items from '@/seeders/items.js'
+import data from '@/seeders/items.js'
 
 export default {
   data() {
@@ -29,8 +29,15 @@ export default {
     }
   },
   created() {
+    console.log(this.$router)
+
     const alias = this.$route.params.itemAlias
-    const item = items.find(el => el.alias === alias)
+    const item = alias && data.find(el => el.alias === alias)
+    console.log(item)
+
+    if (!item) {
+      return this.$router.push({ name: 'NotFound' })
+    }
     this.item = item
   }
 }
